@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TradePost</title>
+<meta name="description" content="TradePost makes Instagram and Facebook posts and websites for South Florida roofers, AC companies and plumbers. Posts $47, websites $250, or we post for you for $500 a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one simple column a non-technical contractor can read top to bottom; big type, one idea per section, every price paired with a plain-English "what happens next". */
+:root{
+  --navy:#0B2545;
+  --navy-2:#13315C;
+  --orange:#F26B1D;
+  --paper:#F5F6F8;
+  --ink:#16202E;
+  --muted:#4E596B;
+  --line:#D9DEE6;
+  --display:"Archivo", "Arial Black", system-ui, sans-serif;
+  --body:"Barlow", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:20px;line-height:1.55}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+/* Header */
+header{background:var(--navy);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;max-width:1040px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:24px}
+.brand svg{width:36px;height:36px}
+.bar .btn{padding:10px 16px;font-size:16px}
+
+/* Buttons */
+.btn{display:inline-block;padding:16px 24px;border-radius:8px;font-weight:700;text-decoration:none;font-size:19px;text-align:center}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:#d95b12}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-outline{border:2px solid #fff;color:#fff}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;padding:44px 0 60px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.hero h1{color:#fff;font-size:clamp(36px,5.4vw,58px);font-weight:800}
+.hero h1 span{color:var(--orange)}
+.hero .lead{color:#D5DDEA;font-size:21px;max-width:31em;margin:18px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.who{margin-top:26px;color:#D5DDEA;font-size:17px}
+.who b{color:#fff}
+
+/* Sample post */
+.post{background:#fff;color:var(--navy);aspect-ratio:1/1;border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.35);display:grid;grid-template-rows:auto 1fr auto;max-width:340px;width:100%;justify-self:end}
+.post .top{display:flex;align-items:center;gap:8px;padding:14px 16px;font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.04em}
+.post .top svg{width:22px;height:22px}
+.post .mid{padding:0 16px;display:flex;flex-direction:column;justify-content:center}
+.post .mid .big{font-family:var(--display);font-weight:800;font-size:46px;line-height:.95}
+.post .mid .big em{font-style:normal;color:var(--orange);display:block}
+.post .mid .svc{margin-top:10px;font-size:14px;color:var(--muted)}
+.post .bot{background:var(--navy);color:#fff;padding:26px 16px 14px;display:flex;align-items:center;gap:12px;clip-path:polygon(0 18%,100% 0,100% 100%,0 100%)}
+.post .bot .call{width:38px;height:38px;border-radius:50%;background:var(--orange);display:grid;place-items:center;flex:none}
+.post .bot .call svg{width:18px;height:18px}
+.post .bot small{display:block;font-size:12px;color:#C9D3E3}
+.post .bot b{font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums}
+.post-note{font-size:15px;color:#D5DDEA;margin-top:10px;max-width:340px;justify-self:end}
+
+/* Sections */
+section{padding:60px 0}
+.head{max-width:36em;margin-bottom:30px}
+.head h2{font-size:clamp(30px,3.6vw,40px);font-weight:800}
+.head p{color:var(--muted);margin-top:10px}
+
+/* Why */
+.why{background:#fff;border-bottom:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.phone{border:2px solid var(--line);border-radius:12px;padding:20px}
+.phone h3{font-size:20px;margin-bottom:8px}
+.phone.bad h3{color:#9B2C2C}
+.phone.good{border-color:var(--orange)}
+.phone.good h3{color:var(--navy)}
+.phone p{color:var(--muted);font-size:18px}
+
+/* Offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.offer{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:14px;position:relative}
+.offer.pick{border:3px solid var(--orange)}
+.offer .tag{position:absolute;top:-14px;left:22px;background:var(--orange);color:#fff;font-size:14px;font-weight:700;padding:4px 12px;border-radius:5px}
+.offer h3{font-size:24px}
+.price{font-family:var(--display);font-weight:800;font-size:44px;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
+.price small{display:block;font-family:var(--body);font-weight:600;font-size:17px;color:var(--muted);margin-top:6px}
+.offer .plain{font-size:18px}
+.offer .next{background:var(--paper);border-radius:8px;padding:12px 14px;font-size:16px;color:var(--muted);flex:1}
+.offer .next b{color:var(--ink);display:block;margin-bottom:2px}
+
+/* More products: grouped, smaller cards */
+.more{margin-top:54px}
+.more > h3{font-size:30px}
+.more > p{color:var(--muted);margin-top:8px;max-width:36em}
+.group{margin-top:34px}
+.group-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:18px}
+.group-head h4{font-family:var(--display);font-size:22px;color:var(--navy);margin:0}
+.group-head span{color:var(--muted);font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.card h5{font-family:var(--display);font-size:19px;color:var(--navy);margin:0;line-height:1.2}
+.card .cost{font-family:var(--display);font-weight:800;font-size:30px;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
+.card .cost small{font-family:var(--body);font-weight:600;font-size:15px;color:var(--muted)}
+.card p{font-size:16px;line-height:1.45}
+.card .after{font-size:15px;color:var(--muted);flex:1}
+.card .after b{color:var(--ink)}
+.card .btn{font-size:16px;padding:12px 14px}
+
+/* Chooser */
+.chooser{margin-top:34px;background:var(--navy);color:#fff;border-radius:12px;padding:26px}
+.chooser h3{color:#fff;font-size:24px;margin-bottom:14px}
+.choice{display:grid;grid-template-columns:1fr auto;gap:8px 18px;align-items:center;padding:12px 0;border-top:1px solid #2C4A75}
+.choice:first-of-type{border-top:0}
+.choice span{font-size:19px}
+.choice a{color:var(--orange);font-weight:700;text-decoration:none;white-space:nowrap}
+.choice a:hover{text-decoration:underline}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.num{width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;font-family:var(--display);font-weight:800;font-size:22px;display:grid;place-items:center;margin-bottom:12px}
+.step h3{font-size:21px}
+.step p{color:var(--muted);margin-top:6px;font-size:18px}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:780px}
+details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+summary{font-weight:700;cursor:pointer;color:var(--navy);font-size:20px}
+details p{margin-top:10px;color:var(--muted);font-size:18px}
+
+/* Final CTA */
+.final{background:var(--navy);color:#fff;text-align:left}
+.final h2{color:#fff}
+.final p{color:#D5DDEA;margin:12px 0 24px;max-width:34em}
+
+footer{background:#081B33;color:#AEBBD0;padding:26px 0;font-size:16px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:860px){
+  .hero .wrap,.why-grid,.offers,.steps{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .post,.post-note{justify-self:start}
+  .choice{grid-template-columns:1fr}
+  .bar .btn{display:none}
+}
+@media (max-width:560px){
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="TradePost home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 19 20 7l15 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="11" y="18" width="18" height="12" rx="3" fill="#F26B1D"/><path d="M15 30l-2 5 6-5" fill="#F26B1D"/><circle cx="16" cy="24" r="1.6" fill="#fff"/><circle cx="20" cy="24" r="1.6" fill="#fff"/><circle cx="24" cy="24" r="1.6" fill="#fff"/></svg>
+      TradePost
+    </a>
+    <a class="btn btn-orange" href="#prices">See prices</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>We make your business <span>look good online.</span></h1>
+      <p class="lead">You're busy fixing roofs, ACs and pipes. We make the Facebook and Instagram posts and the website, so new customers find you and call you.</p>
+      <div class="btns">
+        <a class="btn btn-orange" href="#prices">See prices</a>
+        <a class="btn btn-outline" href="#how">How it works</a>
+      </div>
+      <p class="who">Made for <b>roofers, AC and HVAC companies, plumbers</b> and other home-service pros in South Florida.</p>
+    </div>
+    <div style="display:grid">
+      <div class="post" role="img" aria-label="Example post: Free Estimate, with a company name and phone number">
+        <div class="top">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 19 20 7l15 12" fill="none" stroke="#0B2545" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19v14h20V19" fill="none" stroke="#F26B1D" stroke-width="3"/></svg>
+          YOUR COMPANY NAME
+        </div>
+        <div class="mid">
+          <div class="big">Free<em>Estimate</em></div>
+          <div class="svc">Roof Repair · Replacement</div>
+        </div>
+        <div class="bot">
+          <span class="call"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z" fill="#fff"/></svg></span>
+          <div><small>Call today:</small><b>(954) 555-0142</b></div>
+        </div>
+      </div>
+      <p class="post-note">This is a real example of our posts. Yours will have your company name and your phone number.</p>
+    </div>
+  </div>
+</div>
+
+<section class="why">
+  <div class="wrap">
+    <div class="head">
+      <h2>Why this matters</h2>
+      <p>When someone's AC breaks or their roof leaks, they grab their phone and look you up. What do they see?</p>
+    </div>
+    <div class="why-grid">
+      <div class="phone bad">
+        <h3>✗ An empty or old page</h3>
+        <p>Last post was a year ago. No photos of your work. They wonder if you're still in business, and they call the next company.</p>
+      </div>
+      <div class="phone good">
+        <h3>✓ A busy, fresh page</h3>
+        <p>New posts every week, your 5-star reviews, your phone number on every picture. They trust you, and they call you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="wrap">
+    <div class="head">
+      <h2>Prices</h2>
+      <p>Most people start with one of these three. No hidden fees. Click the button, pay with your card, and you're done. More options are further down.</p>
+    </div>
+    <div class="offers">
+      <div class="offer">
+        <h3>6 Ready-Made Posts</h3>
+        <div class="price">$47<small>Pay once</small></div>
+        <p class="plain">We give you 6 nice-looking posts for Facebook and Instagram. You type in your company name and phone number, then post them. Takes about 10 minutes.</p>
+        <div class="next"><b>What happens after you pay?</b>You get a link right away. Click it and your 6 posts open, ready to edit.</div>
+        <a class="btn btn-navy" href="https://buy.stripe.com/eVq14n7rW5gF0gafoDgnK00">Buy 6 posts · $47</a>
+      </div>
+      <div class="offer pick">
+        <span class="tag">Easiest</span>
+        <h3>We Post For You</h3>
+        <div class="price">$500<small>Per month · stop anytime</small></div>
+        <p class="plain">You don't lift a finger. Every week we make 3 posts with your name, photos and deals, and we put them on your Facebook and Instagram for you. We also answer your Google reviews.</p>
+        <div class="next"><b>What happens after you pay?</b>We email you within 24 hours to get your logo and a few job photos. Your first posts go up that week.</div>
+        <a class="btn btn-orange" href="https://buy.stripe.com/9B6bJ14fKgZn3smb8ngnK01">Start · $500/month</a>
+      </div>
+      <div class="offer">
+        <h3>Your Own Website</h3>
+        <div class="price">$250<small>Pay once</small></div>
+        <p class="plain">A simple website for your business: what you do, where you work, your reviews, and a big "Call Now" button. It works great on phones.</p>
+        <div class="next"><b>What happens after you pay?</b>We email you within 24 hours for your details. Your website is ready in 7 days.</div>
+        <a class="btn btn-navy" href="https://buy.stripe.com/fZu28r13yaAZe706S7gnK02">Get a website · $250</a>
+      </div>
+    </div>
+
+    <div class="chooser">
+      <h3>Not sure which one? Pick the sentence that sounds like you.</h3>
+      <div class="choice"><span>"I just want to try it and see."</span><a href="https://buy.stripe.com/eVq14n7rW5gF0gafoDgnK00">→ 6 posts for $47</a></div>
+      <div class="choice"><span>"I'm too busy to post anything myself."</span><a href="https://buy.stripe.com/9B6bJ14fKgZn3smb8ngnK01">→ We post for you, $500/month</a></div>
+      <div class="choice"><span>"I don't have a website yet."</span><a href="https://buy.stripe.com/fZu28r13yaAZe706S7gnK02">→ Website for $250</a></div>
+      <div class="choice"><span>"$500 a month is too much for me right now."</span><a href="https://buy.stripe.com/bJeaEX7rWbF39QK3FVgnK07">→ Starter plan, $199/month</a></div>
+      <div class="choice"><span>"People can't find me on Google Maps."</span><a href="https://buy.stripe.com/bJe28reUoaAZgf83FVgnK04">→ Google setup, $149</a></div>
+      <div class="choice"><span>"I need more 5-star reviews."</span><a href="https://buy.stripe.com/7sY6oHbIccJ7aUO6S7gnK06">→ Review Booster, $79</a></div>
+      <div class="choice"><span>"I don't have a real logo."</span><a href="https://buy.stripe.com/fZu5kD8w0fVjd2W1xNgnK03">→ Logo design, $97</a></div>
+    </div>
+
+    <div class="more" id="more">
+      <h3>More ways we can help</h3>
+      <p>Pick just what you need. Every button takes you to a safe Stripe checkout.</p>
+
+      <div class="group">
+        <div class="group-head"><h4>Ready-made posts</h4><span>You get them right away and edit them yourself in Canva.</span></div>
+        <div class="cards">
+          <div class="card">
+            <h5>6 Contractor Posts</h5>
+            <div class="cost">$47 <small>once</small></div>
+            <p>6 posts for Facebook and Instagram. Add your name and phone number, then post.</p>
+            <p class="after"><b>After you pay:</b> you get a link right away.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/eVq14n7rW5gF0gafoDgnK00">Buy · $47</a>
+          </div>
+          <div class="card">
+            <h5>Hurricane Season Posts</h5>
+            <div class="cost">$37 <small>once</small></div>
+            <p>Posts about storm prep and storm damage, so people think of you before and after a storm.</p>
+            <p class="after"><b>After you pay:</b> you get a link right away.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/eVqeVd7rW8sR9QKb8ngnK09">Buy · $37</a>
+          </div>
+          <div class="card">
+            <h5>Holiday &amp; Seasonal Posts</h5>
+            <div class="cost">$47 <small>once</small></div>
+            <p>Posts for the holidays and each season, so your page always looks fresh.</p>
+            <p class="after"><b>After you pay:</b> you get a link right away.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/eVqcN5bIccJ7gf890fgnK0a">Buy · $47</a>
+          </div>
+          <div class="card">
+            <h5>Google Review Reply Kit</h5>
+            <div class="cost">$27 <small>once</small></div>
+            <p>Ready-to-copy replies for good and bad Google reviews. Just fill in the name.</p>
+            <p class="after"><b>After you pay:</b> you get a link right away.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/dRm6oH5jO24t0gaa4jgnK0b">Buy · $27</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h4>We set it up for you</h4><span>Pay once. We do the work.</span></div>
+        <div class="cards">
+          <div class="card">
+            <h5>Logo Design</h5>
+            <div class="cost">$97 <small>once</small></div>
+            <p>A clean, professional logo for your trucks, shirts, posts and website.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours to get started.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/fZu5kD8w0fVjd2W1xNgnK03">Buy · $97</a>
+          </div>
+          <div class="card">
+            <h5>Google Maps Setup</h5>
+            <div class="cost">$149 <small>once</small></div>
+            <p>We set up or fix your Google Business Profile so you show up when people search nearby.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours to get started.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/bJe28reUoaAZgf83FVgnK04">Buy · $149</a>
+          </div>
+          <div class="card">
+            <h5>Facebook &amp; Instagram Setup</h5>
+            <div class="cost">$99 <small>once</small></div>
+            <p>We set up or clean up your Facebook and Instagram pages so they look professional.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours to get started.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/bJebJ16nSaAZ5Au6S7gnK05">Buy · $99</a>
+          </div>
+          <div class="card">
+            <h5>Review Booster</h5>
+            <div class="cost">$79 <small>once</small></div>
+            <p>We make it easy for happy customers to leave you a 5-star Google review.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours to get started.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/7sY6oHbIccJ7aUO6S7gnK06">Buy · $79</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h4>Monthly plans</h4><span>Stop anytime. No contract.</span></div>
+        <div class="cards">
+          <div class="card">
+            <h5>We Post For You</h5>
+            <div class="cost">$500 <small>/month</small></div>
+            <p>3 posts a week on your Facebook and Instagram, plus we answer your Google reviews.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours.</p>
+            <a class="btn btn-orange" href="https://buy.stripe.com/9B6bJ14fKgZn3smb8ngnK01">Start · $500/mo</a>
+          </div>
+          <div class="card">
+            <h5>Starter Posting Plan</h5>
+            <div class="cost">$199 <small>/month</small></div>
+            <p>A smaller version of "We Post For You." We make your posts and put them up for you.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/bJeaEX7rWbF39QK3FVgnK07">Start · $199/mo</a>
+          </div>
+          <div class="card">
+            <h5>Website Care</h5>
+            <div class="cost">$29 <small>/month</small></div>
+            <p>We keep your website working and make small changes for you when you need them.</p>
+            <p class="after"><b>After you pay:</b> we email you within 24 hours.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/bJe3cv4fKcJ76Ey5O3gnK08">Start · $29/mo</a>
+          </div>
+          <div class="card">
+            <h5>Your Own Website</h5>
+            <div class="cost">$250 <small>once</small></div>
+            <p>A simple website with your services, reviews and a big "Call Now" button.</p>
+            <p class="after"><b>After you pay:</b> ready in 7 days.</p>
+            <a class="btn btn-navy" href="https://buy.stripe.com/fZu28r13yaAZe706S7gnK02">Buy · $250</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>How it works</h2></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Pick one</h3><p>Choose what you need from the prices above.</p></div>
+      <div class="step"><div class="num">2</div><h3>Pay with your card</h3><p>Checkout is run by Stripe, the same safe payment company big brands use.</p></div>
+      <div class="step"><div class="num">3</div><h3>We take it from there</h3><p>Ready-made posts arrive right away. For everything else, we email you within 24 hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>Common questions</h2></div>
+    <div class="faq">
+      <details><summary>I'm not good with computers. Can I still do this?</summary><p>Yes. If you can send a text message, you can do this. And with the $500 plan, you don't have to do anything at all. We do it all.</p></details>
+      <details><summary>What is Canva? Do I have to pay for it?</summary><p>Canva is a free website for editing pictures. The 6 posts open there. A free Canva account is all you need. You click on the words and type your own.</p></details>
+      <details><summary>Is it safe to pay online?</summary><p>Yes. Payments go through Stripe, a payment company used by millions of businesses. We never see your card number. Your card statement may show the name of our parent company, Silarius.</p></details>
+      <details><summary>Can I stop a monthly plan?</summary><p>Yes, anytime. No contract. It just stops at the end of the month you paid for.</p></details>
+      <details><summary>Do I own what you make?</summary><p>Yes. The posts and the website are yours to keep, even if you stop working with us.</p></details>
+      <details><summary>What's a "domain"? Is it included with the website?</summary><p>A domain is your web address, like yourcompany.com. It's not included, because you should own it yourself. It costs about $10–20 a year, and we'll help you set it up.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Ready to get more calls?</h2>
+    <p>Start with 6 posts for $47. If you like them, we can do the rest for you.</p>
+    <div class="btns">
+      <a class="btn btn-orange" href="https://buy.stripe.com/eVq14n7rW5gF0gafoDgnK00">Get my 6 posts · $47</a>
+      <a class="btn btn-outline" href="#prices">See all prices</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 TradePost · Broward County, Florida</span>
+    <span>Posts and websites for home-service pros</span>
+  </div>
+</footer>
+
+<script>
+/* Glide down to a section instead of jumping, for every on-page link. */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function glideTo(target){
+    var startY = window.pageYOffset;
+    var endY = target.getBoundingClientRect().top + startY - 12;
+    var distance = endY - startY;
+    var duration = Math.min(1400, Math.max(700, Math.abs(distance) * 0.6));
+    var start = null;
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+    function step(now){
+      if (start === null) start = now;
+      var p = Math.min((now - start) / duration, 1);
+      window.scrollTo(0, startY + distance * ease(p));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var id = link.getAttribute('href').slice(1);
+    var target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    e.preventDefault();
+    if (reduce) { target.scrollIntoView(); } else { glideTo(target); }
+    try { history.replaceState(null, '', '#' + id); } catch (err) {}
+  });
+})();
+</script>
+</body>
+</html>
